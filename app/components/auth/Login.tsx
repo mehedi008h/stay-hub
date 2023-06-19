@@ -1,16 +1,20 @@
 "use client";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 import Auth from "./Auth";
 import Heading from "../common/Heading";
 import Button from "../common/Button";
 import useAuth from "@/app/hooks/useAuth";
-import Input from "../inputs/input";
+import Input from "../inputs/Input";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
     const auth = useAuth();
 
     const {
@@ -27,6 +31,23 @@ const Login = () => {
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
         console.log("Data: " + JSON.stringify(data));
+
+        signIn("credentials", {
+            ...data,
+            redirect: false,
+        }).then((callback) => {
+            setIsLoading(false);
+
+            if (callback?.ok) {
+                toast.success("Logged in");
+                router.refresh();
+                router.push("/");
+            }
+
+            if (callback?.error) {
+                toast.error(callback.error);
+            }
+        });
     };
 
     const onToggle = useCallback(() => {
@@ -63,13 +84,13 @@ const Login = () => {
                 outline
                 label="Continue with Google"
                 icon={FcGoogle}
-                onClick={() => ""}
+                onClick={() => signIn("google")}
             />
             <Button
                 outline
                 label="Continue with Github"
                 icon={AiFillGithub}
-                onClick={() => ""}
+                onClick={() => signIn("github")}
             />
             <div
                 className="

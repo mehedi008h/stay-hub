@@ -1,5 +1,7 @@
+import Provider from "./Provider";
 import "./globals.css";
 import { Inter, Poppins, JetBrains_Mono } from "next/font/google";
+import ToasterProvider from "./providers/ToasterProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -25,7 +27,10 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={poppins.className}>{children}</body>
+            <body className={poppins.className}>
+                <ToasterProvider />
+                <Provider>{children}</Provider>
+            </body>
         </html>
     );
 }

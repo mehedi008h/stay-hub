@@ -3,14 +3,19 @@ import Auth from "./Auth";
 import { AiFillGithub } from "react-icons/ai";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useCallback, useState } from "react";
-import useAuth from "@/app/hooks/useAuth";
+import { signIn } from "next-auth/react";
+import { toast } from "react-hot-toast";
 
+import useAuth from "@/app/hooks/useAuth";
 import Button from "../common/Button";
-import Input from "../inputs/input";
+import Input from "../inputs/Input";
 import Heading from "../common/Heading";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const Register = () => {
     const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
     const auth = useAuth();
 
     const {
@@ -27,6 +32,18 @@ const Register = () => {
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
+        axios
+            .post("/api/register", data)
+            .then(() => {
+                toast.success("Registered!");
+                router.push("/");
+            })
+            .catch((error) => {
+                toast.error(error);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
     };
 
     const onToggle = useCallback(() => {
@@ -71,13 +88,13 @@ const Register = () => {
                 outline
                 label="Continue with Google"
                 icon={FcGoogle}
-                onClick={() => ""}
+                onClick={() => signIn("google")}
             />
             <Button
                 outline
                 label="Continue with Github"
                 icon={AiFillGithub}
-                onClick={() => ""}
+                onClick={() => signIn("github")}
             />
             <div
                 className="

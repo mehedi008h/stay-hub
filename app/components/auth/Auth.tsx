@@ -43,7 +43,7 @@ const Auth: React.FC<AuthProps> = ({
         secondaryAction();
     }, [secondaryAction, disabled]);
     return (
-        <div className="justify-center xl:items-center lg:items-center md:items-center items-end flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+        <div className="justify-center xl:items-center lg:items-center md:items-center items-end flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-auth">
             <Link
                 href="/"
                 className="absolute top-5 left-8 text-white flex items-center gap-3 bg-blur h-12 px-3 cursor-pointer group transition duration-75 ease-in-out hover:text-green-500"

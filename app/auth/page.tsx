@@ -6,7 +6,7 @@ import useAuth from "../hooks/useAuth";
 const AuthPage = () => {
     const auth = useAuth();
     return (
-        <div className="w-full h-full flex justify-center items-center bg-auth bg-black">
+        <div className="w-full h-full flex justify-center items-center">
             {auth.login ? (
                 <>
                     <Login />
