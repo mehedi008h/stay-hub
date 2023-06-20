@@ -10,6 +10,7 @@ import { SafeUser } from "@/app/types";
 import Avatar from "../common/Avatar";
 import DarkModeSwitch from "../common/DarkModeSwitch";
 import MobileMenu from "./MobileMenu";
+import useRentModal from "@/app/hooks/useRentModal";
 
 interface UserMenuProps {
     currentUser?: SafeUser | null;
@@ -17,6 +18,7 @@ interface UserMenuProps {
 
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     const router = useRouter();
+    const rentModal = useRentModal();
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -24,10 +26,19 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         setIsOpen((value) => !value);
     }, []);
 
+    const onRent = useCallback(() => {
+        if (!currentUser) {
+            router.push("/auth");
+        }
+
+        rentModal.onOpen();
+    }, [router, rentModal, currentUser]);
+
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
                 <div
+                    onClick={onRent}
                     className="
                     
             hidden
@@ -118,7 +129,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                                     />
                                     <MenuItem
                                         label="Stayhub your home"
-                                        onClick={() => {}}
+                                        onClick={onRent}
                                     />
                                     <hr />
                                     <MenuItem
