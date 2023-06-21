@@ -26,6 +26,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
             showDateDisplay={false}
             minDate={new Date()}
             disabledDates={disabledDates}
+            className="bg-white dark:bg-black w-full"
         />
     );
 };
