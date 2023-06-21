@@ -4,6 +4,7 @@ import getReservations from "@/app/actions/getReservations";
 
 import ListingClient from "./ListingClient";
 import EmptyState from "@/app/components/common/EmptyState";
+import ClientContainer from "@/app/components/common/ClientContainer";
 import Navbar from "@/app/components/navbar/Navbar";
 
 interface IParams {
@@ -16,20 +17,21 @@ const ListingPage = async ({ params }: { params: IParams }) => {
     const currentUser = await getCurrentUser();
 
     if (!listing) {
-        return <EmptyState />;
+        return (
+            <ClientContainer>
+                <EmptyState />
+            </ClientContainer>
+        );
     }
 
     return (
-        <div>
-            <Navbar currentUser={currentUser} />
-            <div className="pt-24 pb-20">
-                <ListingClient
-                    listing={listing}
-                    reservations={reservations}
-                    currentUser={currentUser}
-                />
-            </div>
-        </div>
+        <ClientContainer>
+            <ListingClient
+                listing={listing}
+                reservations={reservations}
+                currentUser={currentUser}
+            />
+        </ClientContainer>
     );
 };
 

@@ -4,6 +4,7 @@ import getReservations from "@/app/actions/getReservations";
 import EmptyState from "../components/common/EmptyState";
 import ReservationsClient from "./ReservationsClient";
 import Navbar from "../components/navbar/Navbar";
+import ClientContainer from "../components/common/ClientContainer";
 
 const ReservationsPage = async () => {
     const currentUser = await getCurrentUser();
@@ -16,23 +17,22 @@ const ReservationsPage = async () => {
 
     if (reservations.length === 0) {
         return (
-            <EmptyState
-                title="No reservations found"
-                subtitle="Looks like you have no reservations on your properties."
-            />
+            <ClientContainer>
+                <EmptyState
+                    title="No reservations found"
+                    subtitle="Looks like you have no reservations on your properties."
+                />
+            </ClientContainer>
         );
     }
 
     return (
-        <div>
-            <Navbar currentUser={currentUser} />
-            <div className="pt-24 pb-20">
-                <ReservationsClient
-                    reservations={reservations}
-                    currentUser={currentUser}
-                />
-            </div>
-        </div>
+        <ClientContainer>
+            <ReservationsClient
+                reservations={reservations}
+                currentUser={currentUser}
+            />
+        </ClientContainer>
     );
 };
 
