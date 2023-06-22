@@ -1,10 +1,12 @@
 import getCurrentUser from "./actions/getCurrentUser";
 import getListings, { IListingsParams } from "./actions/getListings";
+import ClientContainer from "./components/common/ClientContainer";
 import Container from "./components/common/Container";
 import EmptyState from "./components/common/EmptyState";
 import ListingCard from "./components/listings/ListingCard";
 import Navbar from "./components/navbar/Navbar";
 
+export const dynamic = "force-dynamic";
 interface HomeProps {
     searchParams: IListingsParams;
 }
@@ -14,7 +16,11 @@ const Home = async ({ searchParams }: HomeProps) => {
     const listings = await getListings(searchParams);
 
     if (listings.length === 0) {
-        return <EmptyState showReset />;
+        return (
+            <ClientContainer>
+                <EmptyState showReset />
+            </ClientContainer>
+        );
     }
     return (
         <main>

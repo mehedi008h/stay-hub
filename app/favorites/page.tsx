@@ -3,7 +3,6 @@ import getFavoriteListings from "@/app/actions/getFavoriteListings";
 
 import FavoritesClient from "./FavoritesClient";
 import EmptyState from "../components/common/EmptyState";
-import Navbar from "../components/navbar/Navbar";
 import ClientContainer from "../components/common/ClientContainer";
 
 const ListingPage = async () => {

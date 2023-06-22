@@ -3,7 +3,6 @@ import getListings from "@/app/actions/getListings";
 
 import PropertiesClient from "./PropertiesClient";
 import EmptyState from "../components/common/EmptyState";
-import Navbar from "../components/navbar/Navbar";
 import ClientContainer from "../components/common/ClientContainer";
 
 const PropertiesPage = async () => {
