@@ -125,6 +125,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                                         }
                                     />
                                     <MenuItem
+                                        label="My profile"
+                                        onClick={() => router.push("/profile")}
+                                    />
+                                    <MenuItem
                                         label="Stayhub your home"
                                         onClick={onRent}
                                     />
