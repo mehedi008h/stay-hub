@@ -63,6 +63,7 @@ const Search = () => {
         hover:shadow-md 
         transition 
         cursor-pointer
+        links
       "
         >
             <div

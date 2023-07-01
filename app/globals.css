@@ -12,10 +12,13 @@ body {
     padding: 0px;
     overflow-x: hidden;
 }
+.bg-nav {
+    background-color: red;
+}
 
 /* Scroll Bar */
 
-/* ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background-color: #f5f5f5;
 }
 
@@ -29,7 +32,7 @@ body {
     border: 0px;
     background-clip: padding-box;
     border-radius: 5px;
-} */
+}
 
 /* auth  */
 .bg-auth {
@@ -105,4 +108,23 @@ body {
     color: #ffffff;
 
     transition: all 0.3s ease-in-out;
+}
+
+/* target the active bullet */
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: orange;
+    width: 2rem;
+    height: 0.5rem;
+    border-radius: 0.5rem;
+    opacity: 1;
+    transition: all;
+}
+
+/* target all bullets */
+span.swiper-pagination-bullet {
+    background: orangered;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 0.5rem;
+    opacity: 1;
 }

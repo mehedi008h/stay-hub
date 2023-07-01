@@ -7,6 +7,7 @@ import useCountries from "@/app/hooks/useCountries";
 import { SafeUser } from "@/app/types";
 import Avatar from "../common/Avatar";
 import ListingCategory from "./ListingCategory";
+import { MdOutlineBedroomChild } from "react-icons/md";
 
 const Map = dynamic(() => import("../common/Map"), {
     ssr: false,
@@ -67,9 +68,27 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
             text-neutral-500
           "
                 >
-                    <div>{guestCount} guests</div>
-                    <div>{roomCount} rooms</div>
-                    <div>{bathroomCount} bathrooms</div>
+                    <div className="flex items-center gap-2">
+                        <MdOutlineBedroomChild
+                            size={20}
+                            className="text-neutral-700"
+                        />
+                        <span>{guestCount} guests</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <MdOutlineBedroomChild
+                            size={20}
+                            className="text-neutral-700"
+                        />
+                        <span>{roomCount} rooms</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <MdOutlineBedroomChild
+                            size={20}
+                            className="text-neutral-700"
+                        />
+                        <span>{bathroomCount} bathrooms</span>
+                    </div>
                 </div>
             </div>
             <hr />

@@ -1,4 +1,6 @@
-import Provider from "./Provider";
+import ToasterProvider from "./providers/ToasterProvider";
+import RentModal from "./components/modals/RentModal";
+import SearchModal from "./components/modals/SearchModal";
 import "./globals.css";
 import { Inter, Poppins, JetBrains_Mono } from "next/font/google";
 
@@ -27,7 +29,10 @@ export default async function RootLayout({
     return (
         <html lang="en">
             <body className={poppins.className}>
-                <Provider>{children}</Provider>
+                <ToasterProvider />
+                <RentModal />
+                <SearchModal />
+                <div>{children}</div>
             </body>
         </html>
     );

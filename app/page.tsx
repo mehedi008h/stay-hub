@@ -1,9 +1,12 @@
 import getCurrentUser from "./actions/getCurrentUser";
 import getListings, { IListingsParams } from "./actions/getListings";
+import Banner from "./components/banner/Banner";
 import ClientContainer from "./components/common/ClientContainer";
+
 import Container from "./components/common/Container";
 import EmptyState from "./components/common/EmptyState";
 import ListingCard from "./components/listings/ListingCard";
+import Categories from "./components/navbar/Categories";
 import Navbar from "./components/navbar/Navbar";
 
 export const dynamic = "force-dynamic";
@@ -23,13 +26,14 @@ const Home = async ({ searchParams }: HomeProps) => {
         );
     }
     return (
-        <main>
+        <>
             <Navbar currentUser={currentUser} />
+            <Banner />
             <Container>
+                <Categories />
                 <div
                     className="
-                pt-48
-                pb-20
+                py-20
                 grid 
                 grid-cols-1 
                 sm:grid-cols-2 
@@ -49,7 +53,7 @@ const Home = async ({ searchParams }: HomeProps) => {
                     ))}
                 </div>
             </Container>
-        </main>
+        </>
     );
 };
 

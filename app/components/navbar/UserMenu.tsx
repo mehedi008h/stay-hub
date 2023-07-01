@@ -8,7 +8,6 @@ import { signOut } from "next-auth/react";
 import MenuItem from "./MenuItem";
 import { SafeUser } from "@/app/types";
 import Avatar from "../common/Avatar";
-import DarkModeSwitch from "../common/DarkModeSwitch";
 import MobileMenu from "./MobileMenu";
 import useRentModal from "@/app/hooks/useRentModal";
 
@@ -49,14 +48,13 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             px-4 
             rounded-full 
             hover:bg-neutral-100
-            dark:hover:bg-neutral-600
+            text-gray-600
             transition 
             cursor-pointer
           "
                 >
                     Stayhub your home
                 </div>
-                <DarkModeSwitch />
                 <div
                     onClick={toggleOpen}
                     className="
@@ -94,7 +92,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                     shadow-md
                     w-[40vw]
                     md:w-3/4 
-                    dark:bg-neutral-800
                     bg-white
                     overflow-hidden 
                     right-0 

@@ -1,9 +1,9 @@
+"use client";
 import { SafeUser } from "@/app/types";
 
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
-import Categories from "./Categories";
 import Container from "../common/Container";
 
 interface NavbarProps {
@@ -11,12 +11,30 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
+    // // Sticky Menu Area
+    // useEffect(() => {
+    //     window.addEventListener("scroll", isSticky);
+    //     return () => {
+    //         window.removeEventListener("scroll", isSticky);
+    //     };
+    // });
+
+    // /* Method that will fix header after a specific scrollable */
+    // const isSticky = () => {
+    //     const header = document.querySelector(".links") as HTMLElement;
+    //     const scrollTop = window.scrollY;
+    //     console.log("Scroll: ", scrollTop);
+
+    //     scrollTop >= 300
+    //         ? header.classList.add("is-sticky")
+    //         : header.classList.remove("is-sticky");
+    // };
     return (
-        <div className="fixed w-full nav z-10 shadow-sm">
+        <div className={`fixed w-full bg-white z-10`}>
             <div
                 className="
           py-4 
-          border-b-[1px]
+          
         "
             >
                 <Container>
@@ -36,7 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
                     </div>
                 </Container>
             </div>
-            <Categories />
+            {/* <Categories /> */}
         </div>
     );
 };
