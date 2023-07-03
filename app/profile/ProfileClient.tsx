@@ -7,12 +7,14 @@ import { FaRegAddressCard } from "react-icons/fa";
 import { SafeUser } from "../types";
 import Image from "next/image";
 import Button from "../components/common/Button";
+import useUserUpdateModal from "../hooks/useUserUpdateModal";
 
 interface ProfileClientProps {
     currentUser?: SafeUser | null;
 }
 
 const ProfileClient: React.FC<ProfileClientProps> = ({ currentUser }) => {
+    const updateUserModal = useUserUpdateModal();
     return (
         <Container>
             <div className="p-3 rounded-md shadow w-3/4 mx-auto my-12">
@@ -34,7 +36,7 @@ const ProfileClient: React.FC<ProfileClientProps> = ({ currentUser }) => {
                             <Button
                                 label="Update Profile"
                                 small
-                                onClick={() => ""}
+                                onClick={updateUserModal.onOpen}
                             />
                         </div>
                     </div>

@@ -6,7 +6,6 @@ import { BiDollar } from "react-icons/bi";
 interface InputProps {
     id: string;
     label: string;
-    type?: string;
     disabled?: boolean;
     formatPrice?: boolean;
     required?: boolean;
@@ -14,10 +13,9 @@ interface InputProps {
     errors: FieldErrors;
 }
 
-const Input: React.FC<InputProps> = ({
+const Textarea: React.FC<InputProps> = ({
     id,
     label,
-    type = "text",
     disabled,
     formatPrice,
     register,
@@ -37,12 +35,12 @@ const Input: React.FC<InputProps> = ({
           "
                 />
             )}
-            <input
+            <textarea
                 id={id}
                 disabled={disabled}
                 {...register(id, { required })}
                 placeholder=" "
-                type={type}
+                rows={5}
                 className={`
           peer
           w-full
@@ -86,4 +84,4 @@ const Input: React.FC<InputProps> = ({
     );
 };
 
-export default Input;
+export default Textarea;

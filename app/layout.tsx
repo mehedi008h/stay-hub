@@ -3,6 +3,7 @@ import RentModal from "./components/modals/RentModal";
 import SearchModal from "./components/modals/SearchModal";
 import "./globals.css";
 import { Inter, Poppins, JetBrains_Mono } from "next/font/google";
+import UpdateUserModal from "./components/modals/UpdateUserModal";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -32,6 +33,7 @@ export default async function RootLayout({
                 <ToasterProvider />
                 <RentModal />
                 <SearchModal />
+                <UpdateUserModal />
                 <div>{children}</div>
             </body>
         </html>
